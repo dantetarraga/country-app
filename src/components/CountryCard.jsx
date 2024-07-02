@@ -19,7 +19,7 @@ const CountryCard = ({ country }) => {
 
         <div>
           <h2 className='text-sky-500 font-bold leading-none'>{country.name}</h2>
-          <p className='text-gray-400 font-medium text-sm leading-tight'>{country.continent.name}</p>
+          <p className='text-gray-400 font-medium text-sm '>{country.continent.name}</p>
         </div>
       </main>
     </div>

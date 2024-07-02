@@ -10,12 +10,10 @@ export const loaderHome = async () => {
 
   return ({ data })
 }
+
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('')
-  const { data, loading, error } = useQuery(GET_COUNTRIES)
-
-  if (loading) return <div style={{ fontSize: '200px', color: 'red' }}>Loading...</div>
-  if (error) return `Error! ${error.message}`
+  const { data } = useQuery(GET_COUNTRIES)
 
   const filteredCountries = data.countries.filter(country =>
     country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
@@ -25,7 +23,7 @@ const HomePage = () => {
 
   return (
     <div className='w-full'>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} onChange={setSearchTerm} searchTerm={searchTerm} />
       <CountryList countries={filteredCountries} />
     </div>
   )
