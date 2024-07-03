@@ -17,7 +17,6 @@ const useCountryImage = (countryName) => {
   }, [countryName])
 
   return { imageUrl, loading, error }
-  // return { imageUrl: null, loading: false, error: null }
 }
 
 export default useCountryImage
