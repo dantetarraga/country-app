@@ -2,10 +2,13 @@ import React from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import CountryImage from './CountryImage'
 
-const CountryCard = ({ country }) => {
+const CountryCard = ({ country, onSelectCountry }) => {
+  const handleSelectCountry = () => onSelectCountry(country)
+
   return (
-    <div key={country.code} className='shadow-lg rounded-lg cursor-pointer'>
+    <div className='shadow-lg rounded-lg cursor-pointer' onClick={handleSelectCountry}>
       <CountryImage countryName={country.name} />
+
       <main className='p-2 flex items-center gap-3'>
         <ReactCountryFlag
           countryCode={country.code}
