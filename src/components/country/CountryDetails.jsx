@@ -1,5 +1,5 @@
 import ReactCountryFlag from 'react-country-flag'
-import CountryImage from '../CountryImage'
+import CountryImage from './CountryImage'
 
 const REGIONS = ['Tucuman', 'Jujuy', 'Cordoba', 'Santa Cruz', 'Mendoza', 'Buenos Aires', 'Chaco', 'Chubut', 'Entre Rios', 'Formosa', 'La Pampa', 'La Rioja', 'Misiones']
 
