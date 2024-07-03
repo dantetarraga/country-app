@@ -49,7 +49,11 @@ const HomePage = () => {
         />
       </div>
       <div className='flex md:gap-10 gap-2 justify-between'>
-        <CountryList countries={filteredCountries} onSelectCountry={setSelectedCountry} />
+        <CountryList
+          countries={filteredCountries}
+          onSelectCountry={setSelectedCountry}
+          selectedCountry={selectedCountry}
+        />
         {
           selectedCountry &&
           (
