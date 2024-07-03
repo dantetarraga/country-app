@@ -56,7 +56,7 @@ const Search = ({ onSearch, onChangeTerm, searchTerm, onSelectContinent, selecte
       </div>
       {
         showFilter && (
-          <div className='absolute top-full left-0 w-[68%] mt-2' ref={filterRef}>
+          <div className='absolute top-full left-0 md:w-[68%] w-full mt-4' ref={filterRef}>
             <ContinentFilter
               onSelectContinent={onSelectContinent}
               onClear={handleClearFilter}

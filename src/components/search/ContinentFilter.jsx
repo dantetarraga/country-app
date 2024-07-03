@@ -11,16 +11,16 @@ const ContinentFilter = ({ onSelectContinent, onClear, selectedContinents }) => 
   return (
     <div className='bg-white rounded-lg shadow-lg p-4'>
       <div className='flex justify-between items-center'>
-        <h3 className='text-lg font-semibold text-gray-400'>Filtrar por continentes</h3>
+        <h3 className='md:text-lg font-semibold text-gray-400 text-xs'>Filtrar por continentes</h3>
         <button
           onClick={onClear}
-          className='text-blue-400 hover:underline font-semibold text-lg'
+          className='text-blue-400 hover:underline font-semibold md:text-lg text-xs'
         >
           Limpiar
         </button>
       </div>
 
-      <div className='grid grid-cols-3 gap-4 mt-4'>
+      <div className='grid md:grid-cols-3 gap-4 mt-4 grid-cols-2'>
         {
           CONTINENTS.map((continent) => (
             <div
@@ -31,12 +31,12 @@ const ContinentFilter = ({ onSelectContinent, onClear, selectedContinents }) => 
               <img
                 src={continent.Image}
                 alt={continent.name}
-                className={`w-full h-32 object-cover rounded-md 
+                className={`w-full md:h-32 h-20 object-cover rounded-md 
                   ${selectedContinents.includes(continent)
                     ? 'border-2 border-sky-400'
                     : 'border-2 border-gray-200'}`}
               />
-              <p className='font-semibold self-start text-sm text-gray-400'>
+              <p className='font-semibold self-start md:text-sm text-xs text-gray-400'>
                 {continent.name}
               </p>
             </div>
