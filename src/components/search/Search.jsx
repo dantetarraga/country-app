@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import IconSearch from '../icons/IconSearch'
 import ContinentFilter from './ContinentFilter'
 
-const Search = ({ onSearch, onChange, searchTerm }) => {
+const Search = ({ onSearch, onChangeTerm, searchTerm, onSelectContinent, selectedContinents, setSelectedContinents }) => {
   const [showFilter, setShowFilter] = useState(false)
-  const [selectedContinents, setSelectedContinents] = useState([])
   const searchRef = useRef(null)
   const filterRef = useRef(null)
 
@@ -14,14 +13,6 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
-
-  const handleSelectContinent = (continent) => {
-    if (selectedContinents.includes(continent)) {
-      setSelectedContinents(selectedContinents.filter((item) => item.code !== continent.code))
-      return
-    }
-    setSelectedContinents([...selectedContinents, continent])
-  }
 
   const handleInputFocus = () => setShowFilter(true)
   const handleClearFilter = () => setSelectedContinents([])
@@ -47,7 +38,7 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
             type='text'
             className='flex-grow text-sm text-gray-400 focus:outline-none border-b-2 border-sky-400 placeholder:text-xs placeholder:text-gray-400 w-[70%]'
             placeholder='Escribe el país que deseas buscar'
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChangeTerm(e.target.value)}
             onFocus={handleInputFocus}
             value={searchTerm}
           />
@@ -64,7 +55,7 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
         showFilter && (
           <div className='absolute top-full left-0 w-[68%] mt-2' ref={filterRef}>
             <ContinentFilter
-              onSelectContinent={handleSelectContinent}
+              onSelectContinent={onSelectContinent}
               onClear={handleClearFilter}
               selectedContinents={selectedContinents}
             />

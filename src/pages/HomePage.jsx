@@ -14,6 +14,7 @@ export const loaderHome = async () => {
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedContinents, setSelectedContinents] = useState([])
   const [selectedCountry, setSelectedCountry] = useState(null)
   const { data } = useQuery(GET_COUNTRIES)
 
@@ -22,10 +23,24 @@ const HomePage = () => {
   )
 
   const handleSearch = (term) => setSearchTerm(term)
+  const handleSelectContinent = (continent) => {
+    if (selectedContinents.includes(continent)) {
+      setSelectedContinents(selectedContinents.filter((item) => item.code !== continent.code))
+      return
+    }
+    setSelectedContinents([...selectedContinents, continent])
+  }
 
   return (
     <div className='w-full'>
-      <Search onSearch={handleSearch} onChange={setSearchTerm} searchTerm={searchTerm} />
+      <Search
+        onSearch={handleSearch}
+        onChangeTerm={setSearchTerm}
+        searchTerm={searchTerm}
+        onSelectContinent={handleSelectContinent}
+        selectedContinents={selectedContinents}
+        setSelectedContinents={setSelectedContinents}
+      />
       <div className='flex gap-10 justify-between'>
         <CountryList countries={filteredCountries} onSelectCountry={setSelectedCountry} />
         {
