@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { GET_COUNTRIES } from '../api/graphql/queries/getCountries'
 import CountryDetails from '../components/country/CountryDetails'
 import CountryList from '../components/country/CountryList'
-import Search from '../components/ui/Search'
+import Search from '../components/search/Search'
 import client from '../config/apolloClient'
 
 export const loaderHome = async () => {

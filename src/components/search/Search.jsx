@@ -1,16 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import IconSearch from '../icons/IconSearch'
 import ContinentFilter from './ContinentFilter'
 
 const Search = ({ onSearch, onChange, searchTerm }) => {
   const [showFilter, setShowFilter] = useState(false)
+  const [selectedContinents, setSelectedContinents] = useState([])
+  const searchRef = useRef(null)
+  const filterRef = useRef(null)
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  const handleSelectContinent = (continent) => {
+    if (selectedContinents.includes(continent)) {
+      setSelectedContinents(selectedContinents.filter((item) => item.code !== continent.code))
+      return
+    }
+    setSelectedContinents([...selectedContinents, continent])
+  }
 
   const handleInputFocus = () => setShowFilter(true)
-  const handleSelectContinent = (continent) => console.log(continent)
-  const handleClearFilter = () => console.log('Clear filter')
+  const handleClearFilter = () => setSelectedContinents([])
+
+  const handleClickOutside = (event) => {
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(event.target) &&
+      filterRef.current &&
+      !filterRef.current.contains(event.target)
+    ) {
+      setShowFilter(false)
+    }
+  }
 
   return (
-    <div className='max-w-[60%] mx-auto bg-white rounded-full shadow-md overflow-hidden my-5'>
+    <div className='relative max-w-[60%] mx-auto bg-white rounded-full shadow-md my-5' ref={searchRef}>
       <div className='flex items-center justify-between px-7 py-2'>
         <div className='w-full'>
           <label htmlFor='country' className='text-gray-600 block leading-none text-sm'>País</label>
@@ -20,6 +48,7 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
             className='flex-grow text-sm text-gray-400 focus:outline-none border-b-2 border-sky-400 placeholder:text-xs placeholder:text-gray-400 w-[70%]'
             placeholder='Escribe el país que deseas buscar'
             onChange={(e) => onChange(e.target.value)}
+            onFocus={handleInputFocus}
             value={searchTerm}
           />
         </div>
@@ -30,17 +59,18 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
           <IconSearch />
           Buscar
         </button>
-        {
-          showFilter && (
-            <div className='absolute top-full left-0 w-full mt-2'>
-              <ContinentFilter
-                onSelectContinent={handleSelectContinent}
-                onClear={handleClearFilter}
-              />
-            </div>
-          )
-        }
       </div>
+      {
+        showFilter && (
+          <div className='absolute top-full left-0 w-[68%] mt-2' ref={filterRef}>
+            <ContinentFilter
+              onSelectContinent={handleSelectContinent}
+              onClear={handleClearFilter}
+              selectedContinents={selectedContinents}
+            />
+          </div>
+        )
+      }
     </div>
   )
 }

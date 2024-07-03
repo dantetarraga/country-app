@@ -20,3 +20,16 @@ export const GET_COUNTRIES = gql`
     }
   }
 `
+
+export const GET_COUNTRIES_BY_CONTINENT = gql`
+  query GetCountriesByContinent($continents: [String!]) {
+    countries(filter: { continent: { in: $continents } }) {
+      code
+      name
+      continent {
+        name
+      }
+      capital
+    }
+  }
+`
