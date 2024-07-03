@@ -1,8 +1,8 @@
-import IconSearch from './icons/IconSearch'
+import IconSearch from '../icons/IconSearch'
 
 const Search = ({ onSearch, onChange, searchTerm }) => {
   return (
-    <div className='max-w-lg mx-auto bg-white rounded-full shadow-md overflow-hidden my-5'>
+    <div className='max-w-[60%] mx-auto bg-white rounded-full shadow-md overflow-hidden my-5'>
       <div className='flex items-center justify-between px-7 py-2'>
         <div className='w-full'>
           <label htmlFor='country' className='text-gray-600 block leading-none text-sm'>País</label>

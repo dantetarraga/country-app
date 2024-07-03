@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import Sidebar from '../components/Sidebar'
 import CountryLoading from '../components/loading/CountryLoading'
+import Sidebar from '../components/ui/Sidebar'
 
 const AppLayout = () => {
   return (
