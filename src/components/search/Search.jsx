@@ -1,6 +1,14 @@
+import { useState } from 'react'
 import IconSearch from '../icons/IconSearch'
+import ContinentFilter from './ContinentFilter'
 
 const Search = ({ onSearch, onChange, searchTerm }) => {
+  const [showFilter, setShowFilter] = useState(false)
+
+  const handleInputFocus = () => setShowFilter(true)
+  const handleSelectContinent = (continent) => console.log(continent)
+  const handleClearFilter = () => console.log('Clear filter')
+
   return (
     <div className='max-w-[60%] mx-auto bg-white rounded-full shadow-md overflow-hidden my-5'>
       <div className='flex items-center justify-between px-7 py-2'>
@@ -22,6 +30,16 @@ const Search = ({ onSearch, onChange, searchTerm }) => {
           <IconSearch />
           Buscar
         </button>
+        {
+          showFilter && (
+            <div className='absolute top-full left-0 w-full mt-2'>
+              <ContinentFilter
+                onSelectContinent={handleSelectContinent}
+                onClear={handleClearFilter}
+              />
+            </div>
+          )
+        }
       </div>
     </div>
   )
