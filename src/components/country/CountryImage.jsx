@@ -1,4 +1,4 @@
-import useCountryImage from '../hooks/useCountryImage'
+import useCountryImage from '../../hooks/useCountryImage'
 
 const CountryImage = ({ countryName }) => {
   const { imageUrl, loading } = useCountryImage(countryName)
