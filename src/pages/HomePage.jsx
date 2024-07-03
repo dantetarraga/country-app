@@ -21,17 +21,19 @@ const HomePage = () => {
     country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
   )
 
+  console.log(filteredCountries.length)
+
   const handleSearch = (term) => setSearchTerm(term)
 
   return (
     <div className='w-full'>
       <Search onSearch={handleSearch} onChange={setSearchTerm} searchTerm={searchTerm} />
-      <div className='flex w-full gap-10 justify-between'>
+      <div className='flex gap-10 justify-between'>
         <CountryList countries={filteredCountries} onSelectCountry={setSelectedCountry} />
         {
           selectedCountry &&
           (
-            <aside className={`${selectedCountry ? 'block' : 'hidden'}`}>
+            <aside className={`${selectedCountry ? 'block self-center' : 'hidden'}`}>
               <CountryDetails country={selectedCountry} />
             </aside>
           )

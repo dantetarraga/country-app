@@ -1,4 +1,4 @@
-import IconSearch from './IconSearch'
+import IconSearch from './icons/IconSearch'
 
 const Search = ({ onSearch, onChange, searchTerm }) => {
   return (

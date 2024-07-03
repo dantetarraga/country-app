@@ -6,7 +6,7 @@ const CountryCard = ({ country, onSelectCountry }) => {
   const handleSelectCountry = () => onSelectCountry(country)
 
   return (
-    <div className='shadow-lg rounded-lg cursor-pointer' onClick={handleSelectCountry}>
+    <div className='shadow-lg rounded-lg cursor-pointer h-[220px]' onClick={handleSelectCountry}>
       <CountryImage countryName={country.name} />
 
       <main className='p-2 flex items-center gap-3'>
