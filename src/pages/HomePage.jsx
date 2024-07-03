@@ -18,8 +18,6 @@ const HomePage = () => {
   const [selectedCountry, setSelectedCountry] = useState(null)
   const { data } = useQuery(GET_COUNTRIES)
 
-  console.log(data)
-
   const filteredCountries = useMemo(() => {
     if (!data || !data.countries) return []
 
