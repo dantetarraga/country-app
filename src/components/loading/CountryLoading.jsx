@@ -1,6 +1,6 @@
 const CountryLoading = () => {
   return (
-    <div className='flex items-center flex-col justify-center h-screen  gap-2'>
+    <div className='flex items-center flex-col justify-center h-screen gap-2'>
       <div className='flex items-center justify-center'>
         <div className='relative w-24 h-24 animate-spin'>
           <div className='absolute w-full h-full border-8 border-t-blue-300 border-b-red-300 rounded-full' />
