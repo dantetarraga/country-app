@@ -32,7 +32,7 @@ const HomePage = () => {
           selectedCountry &&
           (
             <aside className={`${selectedCountry ? 'block self-center' : 'hidden'}`}>
-              <CountryDetails country={selectedCountry} />
+              <CountryDetails country={selectedCountry} onSelectCountry={setSelectedCountry} />
             </aside>
           )
         }

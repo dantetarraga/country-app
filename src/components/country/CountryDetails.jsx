@@ -1,13 +1,23 @@
 import ReactCountryFlag from 'react-country-flag'
+import IconClose from '../icons/IconClose'
 import CountryImage from './CountryImage'
 
 const REGIONS = ['Tucuman', 'Jujuy', 'Cordoba', 'Santa Cruz', 'Mendoza', 'Buenos Aires', 'Chaco', 'Chubut', 'Entre Rios', 'Formosa', 'La Pampa', 'La Rioja', 'Misiones']
 
-const CountryDetails = ({ country }) => {
+const CountryDetails = ({ country, onSelectCountry }) => {
   if (!country) return null
 
+  const handleOnClose = () => onSelectCountry(null)
+
   return (
-    <div className='bg-white rounded-lg shadow-lg p-4 w-[300px]'>
+    <div className='relative bg-white rounded-lg shadow-2xl p-10 w-[350px]'>
+      <div
+        className='rounded-full top-2 right-2 absolute hover:bg-gray-100 cursor-pointer p-2 transition-colors ease-in-out duration-200'
+        onClick={handleOnClose}
+      >
+        <IconClose />
+      </div>
+
       <CountryImage countryName={country.name} />
 
       <div className='p-2 flex items-center gap-3'>
