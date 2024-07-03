@@ -1,7 +1,8 @@
 const CONTINENTS = [
   { name: 'Europe', Image: '/europa.png', code: 'EU' },
   { name: 'Africa', Image: '/africa.png', code: 'AF' },
-  { name: 'America', Image: '/america.png', code: 'AM' },
+  { name: 'America del Sur', Image: '/america-sur.png', code: 'SA' },
+  { name: 'America del Norte', Image: '/america-norte.png', code: 'NA' },
   { name: 'Asia', Image: '/asia.png', code: 'AS' },
   { name: 'Oceania', Image: '/oceania.png', code: 'OC' }
 ]

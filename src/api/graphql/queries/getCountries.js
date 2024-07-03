@@ -12,6 +12,7 @@ export const GET_COUNTRIES = gql`
         code
       }
       continent {
+        code
         name
       }
       states {

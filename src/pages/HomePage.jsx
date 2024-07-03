@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { GET_COUNTRIES } from '../api/graphql/queries/getCountries'
 import CountryDetails from '../components/country/CountryDetails'
 import CountryList from '../components/country/CountryList'
@@ -18,9 +18,20 @@ const HomePage = () => {
   const [selectedCountry, setSelectedCountry] = useState(null)
   const { data } = useQuery(GET_COUNTRIES)
 
-  const filteredCountries = data.countries.filter(country =>
-    country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-  )
+  console.log(data)
+
+  const filteredCountries = useMemo(() => {
+    if (!data || !data.countries) return []
+
+    return data.countries.filter(country => {
+      const matchesSearchTerm = country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+
+      const matchesContinent = selectedContinents.length === 0 ||
+        selectedContinents.some(continent => continent.code === country.continent.code)
+
+      return matchesSearchTerm && matchesContinent
+    })
+  }, [data, searchTerm, selectedContinents])
 
   const handleSearch = (term) => setSearchTerm(term)
   const handleSelectContinent = (continent) => {
