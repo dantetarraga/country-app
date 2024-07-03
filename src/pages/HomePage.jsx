@@ -3,13 +3,14 @@ import { useMemo, useState } from 'react'
 import { GET_COUNTRIES } from '../api/graphql/queries/getCountries'
 import CountryDetails from '../components/country/CountryDetails'
 import CountryList from '../components/country/CountryList'
+import ErrorFallback from '../components/error/ErrorFallback'
 import Search from '../components/search/Search'
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedContinents, setSelectedContinents] = useState([])
   const [selectedCountry, setSelectedCountry] = useState(null)
-  const { data } = useQuery(GET_COUNTRIES)
+  const { data, error } = useQuery(GET_COUNTRIES)
 
   const filteredCountries = useMemo(() => {
     if (!data || !data.countries) return []
@@ -32,6 +33,8 @@ const HomePage = () => {
     }
     setSelectedContinents([...selectedContinents, continent])
   }
+
+  if (error) return <ErrorFallback />
 
   return (
     <div className='w-full flex flex-col'>

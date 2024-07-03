@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import AppLayout from '../layout/AppLayout'
 import Vista1 from '../pages/Vista1'
 import Vista2 from '../pages/Vista2'
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'vista2',
         element: <Vista2 />
+      },
+      {
+        path: '*',
+        element: <Navigate to='/' />
       }
     ]
   }
