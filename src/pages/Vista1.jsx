@@ -3,6 +3,7 @@ import React from 'react'
 const Vista1 = () => {
   return (
     <div className='flex flex-col items-center justify-center h-full text-center'>
+      <span className='animate-spin text-4xl'>🌍</span>
       <div className='text-center'>
         <h2 className='text-2xl font-bold text-gray-800 mb-2'>Hola! Esta es la Vista 1</h2>
         <div className='mt-4 space-y-2'>

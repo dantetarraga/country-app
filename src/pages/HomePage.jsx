@@ -4,13 +4,6 @@ import { GET_COUNTRIES } from '../api/graphql/queries/getCountries'
 import CountryDetails from '../components/country/CountryDetails'
 import CountryList from '../components/country/CountryList'
 import Search from '../components/search/Search'
-import client from '../config/apolloClient'
-
-export const loaderHome = async () => {
-  const { data } = await client.query({ query: GET_COUNTRIES })
-
-  return ({ data })
-}
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('')

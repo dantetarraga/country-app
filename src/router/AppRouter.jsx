@@ -1,7 +1,6 @@
 import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import AppLayout from '../layout/AppLayout'
-import { loaderHome } from '../pages/HomePage'
 import Vista1 from '../pages/Vista1'
 import Vista2 from '../pages/Vista2'
 
@@ -13,7 +12,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: loaderHome,
         Component: HomePage
       },
       {
