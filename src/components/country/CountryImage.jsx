@@ -1,4 +1,5 @@
 import useCountryImage from '../../hooks/useCountryImage'
+import { ErrorLoadingImage } from '../error/ErrorLoadingImage'
 import ImageNotfound from '../error/ImageNotfound'
 import { LoadingImage } from '../loading/LoadingImage'
 
@@ -7,7 +8,7 @@ const CountryImage = ({ countryName }) => {
 
   if (loading) return <LoadingImage />
 
-  if (error) return <ImageNotfound />
+  if (error) return <ErrorLoadingImage />
 
   if (!imageUrl) return <ImageNotfound />
 
