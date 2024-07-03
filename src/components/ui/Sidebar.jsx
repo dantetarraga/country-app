@@ -10,7 +10,7 @@ const NAVIGATION_ITEMS = [
 const Sidebar = () => {
   return (
     <nav
-      className='h-full flex flex-col bg-white border-r shadow-sm gap-4 p-4'
+      className='h-full md:flex flex-col bg-white border-r shadow-sm gap-4 p-4 hidden'
     >
       <div className='text-center border-b py-2'>
         <img src={Logo} alt='Logo' className='w-32 mx-auto' />

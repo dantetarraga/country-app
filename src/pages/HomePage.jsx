@@ -41,15 +41,17 @@ const HomePage = () => {
   }
 
   return (
-    <div className='w-full'>
-      <Search
-        onSearch={handleSearch}
-        onChangeTerm={setSearchTerm}
-        searchTerm={searchTerm}
-        onSelectContinent={handleSelectContinent}
-        selectedContinents={selectedContinents}
-        setSelectedContinents={setSelectedContinents}
-      />
+    <div className='w-full flex flex-col'>
+      <div className='w-full ml-5 md:ml-0'>
+        <Search
+          onSearch={handleSearch}
+          onChangeTerm={setSearchTerm}
+          searchTerm={searchTerm}
+          onSelectContinent={handleSelectContinent}
+          selectedContinents={selectedContinents}
+          setSelectedContinents={setSelectedContinents}
+        />
+      </div>
       <div className='flex gap-10 justify-between'>
         <CountryList countries={filteredCountries} onSelectCountry={setSelectedCountry} />
         {

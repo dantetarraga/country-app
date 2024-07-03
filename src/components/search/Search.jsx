@@ -29,7 +29,7 @@ const Search = ({ onSearch, onChangeTerm, searchTerm, onSelectContinent, selecte
   }
 
   return (
-    <div className='relative max-w-[60%] mx-auto bg-white rounded-full shadow-md my-5' ref={searchRef}>
+    <div className='relative w-[70%] lg:max-w-[60%] mx-auto bg-white rounded-full shadow-md my-5' ref={searchRef}>
       <div className='flex items-center justify-between px-7 py-2'>
         <div className='w-full'>
           <label htmlFor='country' className='text-gray-600 block leading-none text-sm'>País</label>
@@ -41,6 +41,7 @@ const Search = ({ onSearch, onChangeTerm, searchTerm, onSelectContinent, selecte
             onChange={(e) => onChangeTerm(e.target.value)}
             onFocus={handleInputFocus}
             value={searchTerm}
+            autoComplete='off'
           />
         </div>
         <button
@@ -48,7 +49,9 @@ const Search = ({ onSearch, onChangeTerm, searchTerm, onSelectContinent, selecte
           onClick={() => onSearch(searchTerm)}
         >
           <IconSearch />
-          Buscar
+          <p className='hidden md:block'>
+            Buscar
+          </p>
         </button>
       </div>
       {
